@@ -1,49 +1,116 @@
-/* Enable light/dark mode detection */
 :root {
-  color-scheme: light dark;
+    --bg-light: #F8F9FA;
+    --text-light: #333;
+    --button-light: #007BFF;
+    --highlight-light: #FFC107;
+
+    --bg-dark: #1E1E1E;
+    --text-dark: #EAEAEA;
+    --button-dark: #00C8FF;
+    --highlight-dark: #FF8C00;
 }
 
-/* Default (light mode) */
 body {
-  background-color: #fdf6e3; /* Soft parchment */
-  color: #333;
-  font-family: "Times New Roman", serif;
-  padding: 20px;
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-light);
+    margin: 0;
+    padding: 20px;
+    transition: background 0.3s, color 0.3s;
 }
 
-/* Dark mode */
-@media (prefers-color-scheme: dark) {
-  body {
-    background-color: #222; /* Dark parchment */
-    color: #fdf6e3;
-  }
+body.dark-mode {
+    background-color: var(--bg-dark);
+    color: var(--text-dark);
 }
 
-/* Container styling */
 .container {
-  max-width: 800px;
-  margin: auto;
-  background-color: light-dark(#fff, #333);
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
 }
 
-/* Word entry styling */
-.word-entry {
-  margin-bottom: 15px;
-  padding: 10px;
-  border-left: 4px solid light-dark(#c4a484, #888);
-  background-color: light-dark(#faf3e0, #444);
+.filter-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr auto;
+    gap: 10px;
+    margin-bottom: 20px;
 }
 
-.word-title {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: light-dark(#5a4638, #c4a484);
+.filter-section label {
+    font-weight: bold;
 }
 
-.definition {
-  font-style: italic;
-  color: light-dark(#666, #bbb);
+input[type="number"], select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 60px;
+    text-align: center;
+}
+
+.email-input {
+    margin-top: 20px;
+}
+
+input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background-color: var(--button-light);
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background-color: var(--highlight-light);
+}
+
+.dark-mode-toggle {
+    margin-top: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--button-light);
+}
+
+.dark-mode-toggle:hover {
+    color: var(--highlight-light);
+}
+
+/* Preview */
+.word-list {
+    margin-top: 20px;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.word-list th, .word-list td {
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+.word-list th {
+    background-color: var(--highlight-light);
+    color: var(--text-light);
+}
+
+body.dark-mode .word-list th {
+    background-color: var(--highlight-dark);
+    color: var(--text-dark);
+}
+
+@media (max-width: 600px) {
+    .filter-section {
+        grid-template-columns: 1fr 1fr;
+    }
 }

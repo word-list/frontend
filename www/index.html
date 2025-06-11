@@ -1,17 +1,79 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <title>WordList</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word List Generator</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-    <h1 class="word-title">WordList</h1>
-    <div class="word-entry">Test word</div>
-    <div class="container">
-        Test container
-    </div>
-</body>
 
+    <div class="container">
+        <h1>📌 Word List Generator</h1>
+        <p>Filter and download a customized word list.</p>
+
+        <!-- 🔍 Filter Controls -->
+        <div class="filter-section">
+            <label>Commonness</label>
+            <input type="number" min="0" max="5" value="3">
+            <input type="number" min="0" max="5" value="5">
+            <input type="checkbox">
+            
+            <label>Offensiveness</label>
+            <input type="number" min="0" max="5" value="0">
+            <input type="number" min="0" max="5" value="3">
+            <input type="checkbox">
+            
+            <label>Sentiment</label>
+            <input type="number" min="-5" max="5" value="-2">
+            <input type="number" min="-5" max="5" value="5">
+            <input type="checkbox">
+        </div>
+
+        <!-- 📩 Email Input -->
+        <div class="email-input">
+            <label>Enter your email:</label>
+            <input type="email" placeholder="your@email.com">
+        </div>
+
+        <!-- 🎯 Download Button -->
+        <button>Download List</button>
+
+        <!-- ✅ Success Message (Hidden by Default) -->
+        <p class="success-message" style="display: none;">Your list is being generated. You'll receive an email when it's ready!</p>
+
+        <!-- 📋 Word List Preview -->
+        <table class="word-list">
+            <thead>
+                <tr>
+                    <th>Word</th>
+                    <th>Commonness</th>
+                    <th>Offensiveness</th>
+                    <th>Sentiment</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>ExampleWord1</td>
+                    <td>4</td>
+                    <td>1</td>
+                    <td>-2</td>
+                </tr>
+                <tr>
+                    <td>ExampleWord2</td>
+                    <td>5</td>
+                    <td>0</td>
+                    <td>3</td>
+                </tr>
+                <!-- Additional rows can be inserted dynamically -->
+            </tbody>
+        </table>
+
+        <!-- 🌙 Dark Mode Toggle -->
+        <p class="dark-mode-toggle">Switch to Dark Mode</p>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
 </html>
