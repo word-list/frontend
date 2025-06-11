@@ -14,7 +14,7 @@
 
         <div class="filter-section">
             <label style="grid-column: 1 / 3;">Maximum number of words</label>
-            <input name="maxWordCount" type="number" min="0" max="10000" value="100" />
+            <input name="limit" type="number" min="0" max="10000" value="100" />
 
             <p id="sizeWarning" style=""><span class="icon">⚠️</span> Requesting a list of over 1000 words will result in a download link rather than a live list.</p>
 
@@ -34,7 +34,7 @@
             <input name="minSentiment" type="number" min="-5" max="5" value="-5">
             <input name="maxSentiment" type="number" min="-5" max="5" value="5">
 
-            <button>Generate List</button>
+            <button id="generateButton">Generate List</button>
         </div>
 
         <!-- Word List -->

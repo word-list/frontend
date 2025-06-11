@@ -22,3 +22,6 @@ jobs:
 
       - name: Sync files with S3
         run: aws s3 sync www s3://${{ vars.FRONTEND_BUCKET_NAME }} --delete
+
+      - name: Invalidate Cloudfront Cache
+        run: aws cloudfront create-invalidation --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"
