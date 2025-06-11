@@ -25,40 +25,39 @@ body.dark-mode {
 }
 
 .container {
-    max-width: 600px;
-    margin: auto;
     padding: 20px;
     text-align: center;
+    display: grid;
+    grid-template-columns: 21em 1fr;
+    gap: 1rem;
+    align-items: start;
 }
 
 .filter-section {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr auto;
-    gap: 10px;
-    margin-bottom: 20px;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 0.5rem;
+    min-width: 21em;
+    max-width: 21em;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .filter-section label {
-    font-weight: bold;
+    text-align: left;
+}
+
+.filter-section h4 {
+    padding: 0;
+    margin: 0;
+    text-align: left;
 }
 
 input[type="number"], select {
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    width: 60px;
-    text-align: center;
-}
-
-.email-input {
-    margin-top: 20px;
-}
-
-input[type="email"] {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    text-align: right;
 }
 
 button {
@@ -70,6 +69,7 @@ button {
     cursor: pointer;
     font-size: 16px;
     transition: background 0.3s;
+    grid-column: 1 / 4;
 }
 
 button:hover {
@@ -89,28 +89,44 @@ button:hover {
 
 /* Preview */
 .word-list {
-    margin-top: 20px;
     border-collapse: collapse;
-    width: 100%;
 }
 
 .word-list th, .word-list td {
-    padding: 10px;
+    padding: 0.5rem;
     border: 1px solid #ccc;
 }
 
-.word-list th {
-    background-color: var(--highlight-light);
+.word-list th {    
+    font-weight: bold;
     color: var(--text-light);
 }
 
-body.dark-mode .word-list th {
-    background-color: var(--highlight-dark);
+.filter-section #sizeWarning {
+    grid-column: 1 / 4; 
+    margin-top: 0; 
+    font-style: italic;
+}
+
+body.dark-mode .word-list th {    
     color: var(--text-dark);
 }
 
-@media (max-width: 600px) {
-    .filter-section {
-        grid-template-columns: 1fr 1fr;
+span.icon {
+    font-style: normal !important;
+}
+
+table.word-list tbody:empty::before {
+    content: "No words available";
+    display: block;
+    text-align: center;
+    padding: 10px;
+    color: #666;
+    font-style: italic;
+}
+
+@media (max-width: 55em) {
+    .container {
+        grid-template-columns: 1fr;
     }
 }

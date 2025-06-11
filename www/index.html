@@ -8,43 +8,46 @@
 </head>
 <body>
 
-    <div class="container">
-        <h1>📌 Word List Generator</h1>
-        <p>Filter and download a customized word list.</p>
+    <h1>📌 Word List Generator</h1>
 
-        <!-- 🔍 Filter Controls -->
+    <form class="container">
+
         <div class="filter-section">
+            <label style="grid-column: 1 / 3;">Maximum number of words</label>
+            <input name="maxWordCount" type="number" min="0" max="10000" value="100" />
+
+            <p id="sizeWarning" style=""><span class="icon">⚠️</span> Requesting a list of over 1000 words will result in a download link rather than a live list.</p>
+
+            <h4>Score</h4>
+            <h4>Min</h4>
+            <h4>Max</h4>
+
             <label>Commonness</label>
-            <input type="number" min="0" max="5" value="3">
-            <input type="number" min="0" max="5" value="5">
-            <input type="checkbox">
-            
+            <input name="minCommonness" type="number" min="0" max="5" value="0">
+            <input name="maxCommonness" type="number" min="0" max="5" value="5">
+
             <label>Offensiveness</label>
-            <input type="number" min="0" max="5" value="0">
-            <input type="number" min="0" max="5" value="3">
-            <input type="checkbox">
-            
+            <input name="minOffensiveness" type="number" min="0" max="5" value="0">
+            <input name="maxOffensiveness" type="number" min="0" max="5" value="5">
+
             <label>Sentiment</label>
-            <input type="number" min="-5" max="5" value="-2">
-            <input type="number" min="-5" max="5" value="5">
-            <input type="checkbox">
+            <input name="minSentiment" type="number" min="-5" max="5" value="-5">
+            <input name="maxSentiment" type="number" min="-5" max="5" value="5">
+
+            <button>Generate List</button>
         </div>
 
-        <!-- 📩 Email Input -->
-        <div class="email-input">
-            <label>Enter your email:</label>
-            <input type="email" placeholder="your@email.com">
-        </div>
-
-        <!-- 🎯 Download Button -->
-        <button>Download List</button>
-
-        <!-- ✅ Success Message (Hidden by Default) -->
-        <p class="success-message" style="display: none;">Your list is being generated. You'll receive an email when it's ready!</p>
-
-        <!-- 📋 Word List Preview -->
+        <!-- Word List -->
         <table class="word-list">
             <thead>
+                <tr>
+                    <th colspan="4">
+                        <button id="copyButton">📋 CSV</button>
+                        <button id="copyButton">📋 TXT</button>
+                        <button id="csvButton">📥 CSV</button>
+                        <button id="txtButton">📥 TXT</button>
+                    </th>
+                </tr>
                 <tr>
                     <th>Word</th>
                     <th>Commonness</th>
@@ -52,26 +55,8 @@
                     <th>Sentiment</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <td>ExampleWord1</td>
-                    <td>4</td>
-                    <td>1</td>
-                    <td>-2</td>
-                </tr>
-                <tr>
-                    <td>ExampleWord2</td>
-                    <td>5</td>
-                    <td>0</td>
-                    <td>3</td>
-                </tr>
-                <!-- Additional rows can be inserted dynamically -->
-            </tbody>
+            <tbody></tbody>
         </table>
-
-        <!-- 🌙 Dark Mode Toggle -->
-        <p class="dark-mode-toggle">Switch to Dark Mode</p>
-
     </div>
 
     <script src="script.js"></script>
