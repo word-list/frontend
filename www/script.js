@@ -5,7 +5,7 @@ document.querySelector("#generateButton").addEventListener("click", async functi
     const params = new URLSearchParams(formData).toString();
 
     try {
-        const response = await fetch(`https://staging.wordlist.gaul.tech/api/wordlist?${params}`);
+        const response = await fetch(`/api/words?${params}`);
         const data = await response.json();
 
         updateTable(data.words);
