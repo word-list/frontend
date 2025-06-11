@@ -1,0 +1,13 @@
+html,
+body {
+    background-color: #322;
+
+    color: #eef;
+}
+
+@media (prefers-color-scheme: light) {
+    body {
+        background-color: #fee;
+        color: #223;
+    }
+}
