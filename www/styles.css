@@ -1,13 +1,49 @@
-html,
-body {
-    background-color: #322;
-
-    color: #eef;
+/* Enable light/dark mode detection */
+:root {
+  color-scheme: light dark;
 }
 
-@media (prefers-color-scheme: light) {
-    body {
-        background-color: #fee;
-        color: #223;
-    }
+/* Default (light mode) */
+body {
+  background-color: #fdf6e3; /* Soft parchment */
+  color: #333;
+  font-family: "Times New Roman", serif;
+  padding: 20px;
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #222; /* Dark parchment */
+    color: #fdf6e3;
+  }
+}
+
+/* Container styling */
+.container {
+  max-width: 800px;
+  margin: auto;
+  background-color: light-dark(#fff, #333);
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Word entry styling */
+.word-entry {
+  margin-bottom: 15px;
+  padding: 10px;
+  border-left: 4px solid light-dark(#c4a484, #888);
+  background-color: light-dark(#faf3e0, #444);
+}
+
+.word-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: light-dark(#5a4638, #c4a484);
+}
+
+.definition {
+  font-style: italic;
+  color: light-dark(#666, #bbb);
 }
