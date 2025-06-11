@@ -19,7 +19,7 @@ function updateTable(words) {
     const tbody = document.querySelector(".word-list tbody");
     tbody.innerHTML = "";
 
-    if (words.length === 0) {
+    if (!words || words.length === 0) {
         return;
     }
 
