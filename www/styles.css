@@ -33,7 +33,8 @@ body.dark-mode {
     align-items: start;
 }
 
-.filter-section {
+.filter-section { 
+    position: sticky;   
     display: grid;
     grid-template-columns: 2fr 1fr 1fr;
     gap: 0.5rem;
