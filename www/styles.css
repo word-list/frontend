@@ -78,6 +78,11 @@ button:hover {
     background-color: var(--highlight-light);
 }
 
+button:disabled {
+    pointer-events: none;
+    opacity: 0.5;    
+}
+
 .dark-mode-toggle {
     margin-top: 20px;
     cursor: pointer;
