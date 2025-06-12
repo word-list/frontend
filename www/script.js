@@ -30,13 +30,11 @@ function copyTableData(wordOnly) {
 
 document.getElementById("copyCsvButton").addEventListener("click", async function (event) {
     event.preventDefault();
-
     copyTableData(false);
 });
 
 document.getElementById("copyTxtButton").addEventListener("click", async function (event) {
     event.preventDefault();
-
     copyTableData(true);
 });
 
@@ -51,6 +49,16 @@ function downloadTableData(wordOnly) {
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
 }
+
+document.getElementById("downloadCsvButton").addEventListener("click", async function (event) {
+    event.preventDefault();
+    downloadTableData(false);
+});
+
+document.getElementById("downloadTxtButton").addEventListener("click", async function (event) {
+    event.preventDefault();
+    downloadTableData(true);
+});
 
 function updateTable(words) {
     const tbody = document.querySelector(".word-list tbody");
