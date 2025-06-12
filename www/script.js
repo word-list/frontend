@@ -22,6 +22,8 @@ function getTableContent(wordOnly) {
     const output = wordOnly 
         ? rows.map(row => row.children[0].innerText).join("\n")
         : rows.map(row => [...row.children].map(cell => cell.innerText).join(",")).join("\n");
+
+    return output;
 }
 
 function copyTableData(wordOnly) {
