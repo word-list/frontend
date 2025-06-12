@@ -1,4 +1,4 @@
-document.querySelector("#generateButton").addEventListener("click", async function (event) {
+document.getElementById("generateButton").addEventListener("click", async function (event) {
     event.preventDefault();
 
     const formData = new FormData(document.querySelector("form"));
@@ -13,7 +13,30 @@ document.querySelector("#generateButton").addEventListener("click", async functi
     catch (error) {
         console.error("Error fetching word list:", error);
     }
-})
+});
+
+function copyTableData(wordOnly) {
+    const tableBody = document.querySelector("table.word-list tbody");
+    const rows = [... table.querySelectorAll("tr")]
+
+    const output = wordOnly 
+        ? rows.map(row => row.children[0].innerText)
+        : rows.map(row => [...row.children].map(cell => cell.innerText).join(",")).join("\n");
+
+    navigator.clipboard.writeText(output);
+}
+
+document.getElementById("copyCsvButton").addEventListener("click", async function (event) {
+    event.preventDefault();
+
+    copyTableData(false);
+});
+
+document.getElementById("copyTxtButton").addEventListener("click", async function (event) {
+    event.preventDefault();
+
+    copyTableData(true);
+});
 
 function updateTable(words) {
     const tbody = document.querySelector(".word-list tbody");
