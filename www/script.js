@@ -15,15 +15,17 @@ document.getElementById("generateButton").addEventListener("click", async functi
     }
 });
 
-function copyTableData(wordOnly) {
+function getTableContent(wordOnly) {
     const tableBody = document.querySelector("table.word-list tbody");
     const rows = [... tableBody.querySelectorAll("tr")]
 
     const output = wordOnly 
         ? rows.map(row => row.children[0].innerText).join("\n")
         : rows.map(row => [...row.children].map(cell => cell.innerText).join(",")).join("\n");
+}
 
-    navigator.clipboard.writeText(output);
+function copyTableData(wordOnly) {
+    navigator.clipboard.writeText(getTableContent(wordOnly));
 }
 
 document.getElementById("copyCsvButton").addEventListener("click", async function (event) {
@@ -37,6 +39,18 @@ document.getElementById("copyTxtButton").addEventListener("click", async functio
 
     copyTableData(true);
 });
+
+function downloadTableData(wordOnly) {
+    const blob = new Blob([getTableContent(wordOnly)], { type: wordOnly ? "text/plain" : "text/csv" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `wordlist.${wordOnly ? 'txt' : 'csv'}`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+}
 
 function updateTable(words) {
     const tbody = document.querySelector(".word-list tbody");
