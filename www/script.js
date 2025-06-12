@@ -96,6 +96,11 @@ function createSlider(name, min, max) {
     const slider = document.getElementById(name+"Slider");
 
     noUiSlider.create(slider, {
+        pips: {
+            mode: 'positions',
+            values: min < 0 ? [min, 0, max] : [min, max],
+            density: 1
+        },
         start: [min, max],
         connect: true,
         range: {
