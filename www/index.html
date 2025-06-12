@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Word List Generator</title>
+    <title>Word List Generator</title>    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.6.0/nouislider.min.css">    
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -24,16 +25,19 @@
             <h4>Max</h4>
 
             <label>Commonness</label>
-            <input name="minCommonness" type="number" min="0" max="5" value="0">
-            <input name="maxCommonness" type="number" min="0" max="5" value="5">
+            <div id="CommonnessSlider"></div>
+            <input name="minCommonness" type="hidden" min="0" max="5" value="0">
+            <input name="maxCommonness" type="hidden" min="0" max="5" value="5">
 
             <label>Offensiveness</label>
-            <input name="minOffensiveness" type="number" min="0" max="5" value="0">
-            <input name="maxOffensiveness" type="number" min="0" max="5" value="5">
+            <div id="OffensivenessSlider"></div>
+            <input name="minOffensiveness" type="hidden" min="0" max="5" value="0">
+            <input name="maxOffensiveness" type="hidden" min="0" max="5" value="5">
 
             <label>Sentiment</label>
-            <input name="minSentiment" type="number" min="-5" max="5" value="-5">
-            <input name="maxSentiment" type="number" min="-5" max="5" value="5">
+            <div id="SentimentSlider"></div>
+            <input name="minSentiment" type="hidden" min="-5" max="5" value="-5">
+            <input name="maxSentiment" type="hidden" min="-5" max="5" value="5">
 
             <button id="generateButton">Generate List</button>
         </div>
@@ -60,6 +64,7 @@
         </table>
     </div>
 
-    <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.6.0/nouislider.min.js"></script>
+    <script src="script.js"></script>    
 </body>
 </html>

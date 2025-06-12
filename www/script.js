@@ -91,3 +91,25 @@ function updateTable(words) {
         tbody.appendChild(row);
     });
 }
+
+function createSlider(name, min, max) {
+    const slider = document.getElementById(name+"Slider");
+    noUiSlider.create(slider, {
+        start: [min, max],
+        connect: true,
+        range: {
+            min: min,
+            max: max
+        },
+        step: 1
+    });
+
+    slider.noUiSlider.on("update", function(values) {
+        document.getElementById("min"+name).value=values[0];
+        document.getElementById("max"+name).value=values[1];
+    })
+}
+
+createSlider("Commonness", 0, 5);
+createSlider("Offensiveness", 0, 5);
+createSlider("Sentiment", -5, 5);
