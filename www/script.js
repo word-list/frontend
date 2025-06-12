@@ -98,10 +98,10 @@ function createSlider(name, min, max) {
     noUiSlider.create(slider, {
         pips: {
             mode: 'positions',
-            values: min < 0 ? [min, 0, max] : [min, max],
-            density: 1
+            values: min < 0 ? [0, 50, 100] : [0, 100],
+            density: 100 / (max - min)
         },
-        start: [min, max],
+        start: [min < 0 ? 0 : min, max],
         connect: true,
         range: {
             min: min,

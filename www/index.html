@@ -20,22 +20,18 @@
 
             <p id="sizeWarning" style="display: none;"><span class="icon">⚠️</span> Requesting a list of over 1000 words will result in a download link rather than a live list.</p>
 
-            <h4>Score</h4>
-            <h4>Min</h4>
-            <h4>Max</h4>
-
             <label>Commonness</label>
-            <div style="grid-column: 2 / 4;" id="CommonnessSlider"></div>
+            <div class="slider"><div id="CommonnessSlider"></div></div>
             <input name="minCommonness" type="hidden" min="0" max="5" value="0">
             <input name="maxCommonness" type="hidden" min="0" max="5" value="5">
 
             <label>Offensiveness</label>
-            <div style="grid-column: 2 / 4;" id="OffensivenessSlider"></div>
+            <div class="slider"><div id="OffensivenessSlider"></div></div>
             <input name="minOffensiveness" type="hidden" min="0" max="5" value="0">
             <input name="maxOffensiveness" type="hidden" min="0" max="5" value="5">
 
             <label>Sentiment</label>
-            <div style="grid-column: 2 / 4;" id="SentimentSlider"></div>
+            <div class="slider"><div id="SentimentSlider"></div></div>
             <input name="minSentiment" type="hidden" min="-5" max="5" value="-5">
             <input name="maxSentiment" type="hidden" min="-5" max="5" value="5">
 
