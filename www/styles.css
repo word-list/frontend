@@ -90,10 +90,11 @@ button:hover {
 /* Preview */
 .word-list {
     border-collapse: collapse;
+    border-radius: 5px;
 }
 
 .word-list th, .word-list td {
-    padding: 0.5rem;
+    padding: 0.2rem;
     border: 1px solid #ccc;
 }
 
