@@ -14,9 +14,10 @@
 
         <div class="filter-section">
             <label style="grid-column: 1 / 3;">Maximum number of words</label>
-            <input name="limit" type="number" min="0" max="10000" value="100" />
+            <input name="randomCount" type="number" min="0" max="10000" value="100" />
+            <input name="limit" type="hidden" value="100" />
 
-            <p id="sizeWarning" style=""><span class="icon">⚠️</span> Requesting a list of over 1000 words will result in a download link rather than a live list.</p>
+            <p id="sizeWarning" style="display: none;"><span class="icon">⚠️</span> Requesting a list of over 1000 words will result in a download link rather than a live list.</p>
 
             <h4>Score</h4>
             <h4>Min</h4>
