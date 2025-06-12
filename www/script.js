@@ -17,10 +17,10 @@ document.getElementById("generateButton").addEventListener("click", async functi
 
 function copyTableData(wordOnly) {
     const tableBody = document.querySelector("table.word-list tbody");
-    const rows = [... table.querySelectorAll("tr")]
+    const rows = [... tableBody.querySelectorAll("tr")]
 
     const output = wordOnly 
-        ? rows.map(row => row.children[0].innerText)
+        ? rows.map(row => row.children[0].innerText).join("\n")
         : rows.map(row => [...row.children].map(cell => cell.innerText).join(",")).join("\n");
 
     navigator.clipboard.writeText(output);
