@@ -1,6 +1,12 @@
 document.getElementById("generateButton").addEventListener("click", async function (event) {
     event.preventDefault();
 
+    const button = event.target;
+
+    const originalText = button.innerText;
+    button.innerText = "Loading...";
+    button.disabled = true;
+
     const formData = new FormData(document.querySelector("form"));
     const params = new URLSearchParams(formData).toString();
 
@@ -12,6 +18,10 @@ document.getElementById("generateButton").addEventListener("click", async functi
     }
     catch (error) {
         console.error("Error fetching word list:", error);
+    }
+    finally {
+        button.innerText = originalText;
+        button.disabled = false;
     }
 });
 

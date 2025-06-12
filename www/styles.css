@@ -34,7 +34,8 @@ body.dark-mode {
 }
 
 .filter-section { 
-    position: sticky;   
+    position: sticky;
+    top: 0;
     display: grid;
     grid-template-columns: 2fr 1fr 1fr;
     gap: 0.5rem;
