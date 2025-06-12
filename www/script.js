@@ -94,6 +94,7 @@ function updateTable(words) {
 
 function createSlider(name, min, max) {
     const slider = document.getElementById(name+"Slider");
+
     noUiSlider.create(slider, {
         start: [min, max],
         connect: true,
@@ -105,8 +106,8 @@ function createSlider(name, min, max) {
     });
 
     slider.noUiSlider.on("update", function(values) {
-        document.getElementById("min"+name).value=values[0];
-        document.getElementById("max"+name).value=values[1];
+        document.getElementsByName("min"+name).value=values[0];
+        document.getElementsByName("max"+name).value=values[1];
     })
 }
 
