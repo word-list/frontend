@@ -128,7 +128,7 @@ document.getElementById("toggleScoresButton").addEventListener("click", async fu
     const showText = "Show Scores";
     const hideText = "Hide Scores";
     
-    const columns = Array.from(document.querySelector("table.word-list col:not(:first-child)"));
+    const columns = Array.from(document.querySelectorAll("table.word-list col:not(:first-child)"));
 
     const show = button.innerText == showText;
 
