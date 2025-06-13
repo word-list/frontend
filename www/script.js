@@ -72,10 +72,12 @@ document.getElementById("downloadTxtButton").addEventListener("click", async fun
 });
 
 function rebuildTable() {
+    const thead = document.querySelector(".word-list thead");
     const tbody = document.querySelector(".word-list tbody");
     tbody.innerHTML = "";
 
     if (document.showScores) {
+        thead.style.display = '';
         document.words.forEach(word => {
             const row = document.createElement("tr");
             row.innerHTML = `
@@ -88,6 +90,7 @@ function rebuildTable() {
         });
     }
     else {
+        thead.style.display = 'none';
         var columns = 4;
         var wordsPerColumn = document.words.length / columns;
         for (var rowIndex = 0; rowIndex < wordsPerColumn; rowIndex++) {
