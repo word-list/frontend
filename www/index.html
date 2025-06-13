@@ -14,7 +14,7 @@
     <form class="container">
 
         <div class="filter-section">
-            <label style="grid-column: 1 / 3;">Maximum number of words</label>
+            <label style="grid-column: 1 / 4;">Maximum number of words</label>
             <input name="randomCount" type="number" min="0" max="10000" value="100" />
             <input name="limit" type="hidden" value="100" />
 
@@ -35,33 +35,30 @@
             <input name="minSentiment" type="hidden" min="-5" max="5" value="-5">
             <input name="maxSentiment" type="hidden" min="-5" max="5" value="5">
 
-            <button id="generateButton">Generate List</button>
+            <button style="grid-column: 1 / 4;" id="generateButton">Generate List</button>
+            <button id="toggleScoresButton">Show Scores</button>
+                        
+            <button id="copyCsvButton">📋 CSV</button>
+            <button id="copyTxtButton">📋 TXT</button>
+            <button id="downloadCsvButton">📥 CSV</button>
+            <button id="downloadTxtButton">📥 TXT</button>
+            
+            
         </div>
 
         <!-- Word List -->
         <table class="word-list">
-            <col />
-            <col />
-            <col />
-            <col />
             <thead>
                 <tr>
-                    <th colspan="4">
-                        <button id="copyCsvButton">📋 CSV</button>
-                        <button id="copyTxtButton">📋 TXT</button>
-                        <button id="downloadCsvButton">📥 CSV</button>
-                        <button id="downloadTxtButton">📥 TXT</button>
-                        <button id="toggleScoresButton">Show Scores</button>
-                    </th>
-                </tr>
-                <tr>
-                    <th>Word</th>
-                    <th>Commonness</th>
-                    <th>Offensiveness</th>
-                    <th>Sentiment</th>
+                    <th class="word">Word</th>
+                    <th class="score">Commonness</th>
+                    <th class="score">Offensiveness</th>
+                    <th class="score">Sentiment</th>
                 </tr>
             </thead>
-            <tbody></tbody>
+            <tbody>
+                
+            </tbody>
         </table>
     </div>
 

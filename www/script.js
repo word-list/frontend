@@ -25,13 +25,12 @@ document.getElementById("generateButton").addEventListener("click", async functi
     }
 });
 
-function getTableContent(wordOnly) {
-    const tableBody = document.querySelector("table.word-list tbody");
-    const rows = [... tableBody.querySelectorAll("tr")]
+function getTableContent(wordOnly) {    
+    const words = document.words;
 
     const output = wordOnly 
-        ? rows.map(row => row.children[0].innerText).join("\n")
-        : rows.map(row => [...row.children].map(cell => cell.innerText).join(",")).join("\n");
+        ? words.map(w => w.text).join("\n")
+        : words.map(w => `${w.text},${w.commonness},${w.offensiveness},${w.sentiment}`).join("\n");
 
     return output;
 }
@@ -72,24 +71,47 @@ document.getElementById("downloadTxtButton").addEventListener("click", async fun
     downloadTableData(true);
 });
 
-function updateTable(words) {
+function rebuildTable() {
     const tbody = document.querySelector(".word-list tbody");
     tbody.innerHTML = "";
 
+    if (document.showScores) {
+        document.words.forEach(word => {
+            const row = document.createElement("tr");
+            row.innerHTML = `
+                <td class="word">${word.text}</td>
+                <td class="score">${word.commonness}</td>
+                <td class="score">${word.offensiveness}</td>
+                <td class="score">${word.sentiment}</td>
+            `;
+            tbody.appendChild(row);
+        });
+    }
+    else {
+        var columns = 4;
+        var wordsPerColumn = document.words.length / columns;
+        for (var rowIndex = 0; rowIndex < wordsPerColumn; rowIndex++) {
+            const row = document.createElement("tr");
+            let columnWords = [ "", "", "", "" ];
+            for (var columnIndex = 0; columnIndex < columns; columnIndex++) {
+                const wordIndex = rowIndex + columnIndex * wordsPerColumn;
+                if (wordIndex >= document.words.length) break;
+                columnWords[columnIndex] = document.words[wordIndex];
+            }
+            row.innerHTML = columnWords.map(w => w ? `<td class="word">${w.text}</td>` : "").join("");
+            tbody.appendChild(row);
+        }
+    }
+}
+
+function updateTable(words) {    
     if (!words || words.length === 0) {
         return;
     }
 
-    words.forEach(word => {
-        const row = document.createElement("tr");
-        row.innerHTML = `
-            <td>${word.text}</td>
-            <td>${word.commonness}</td>
-            <td>${word.offensiveness}</td>
-            <td>${word.sentiment}</td>
-        `;
-        tbody.appendChild(row);
-    });
+    document.words = words;
+
+    rebuildTable();    
 }
 
 function createSlider(name, min, max) {
@@ -123,15 +145,17 @@ createSlider("Sentiment", -5, 5);
 document.getElementById("toggleScoresButton").addEventListener("click", async function (event) {
     event.preventDefault();
 
-    const button = event.target;    
+    const showScoresText = "Show Scores";
+    const showWordsText = "Just Words";
+    const button = event.target;
 
-    const showText = "Show Scores";
-    const hideText = "Hide Scores";
-    
-    const columns = Array.from(document.querySelectorAll("table.word-list col:not(:first-child)"));
+    document.showScores = !!!document.showScores;
 
-    const show = button.innerText == showText;
+    button.innerText = document.showScores ? showWordsText : showScoresText;
 
-    columns.forEach(col => col.style.visibility = show ? "" : "collapse");
-    button.innerText = show ? hideText : showText;
+    rebuildTable();    
 });
+
+document.words = [
+    { text: "apple", offensiveness: 2, commonness: 5, sentiment: 0 }
+];
