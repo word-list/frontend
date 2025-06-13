@@ -119,3 +119,20 @@ function createSlider(name, min, max) {
 createSlider("Commonness", 0, 5);
 createSlider("Offensiveness", 0, 5);
 createSlider("Sentiment", -5, 5);
+
+document.getElementById("toggleScoresButton").addEventListener("click", async function (event) {
+    event.preventDefault();
+
+    const button = event.target;    
+
+    const showText = "Show Scores";
+    const hideText = "Hide Scores";
+
+    const tableBody = document.querySelector(".word-list tbody");
+    const columns = tableBody.getElementsByTagName("col");
+
+    const show = button.innerText == showText;
+
+    columns.forEach(col => col.style.visibility = show ? "" : "collapse");
+    button.innerText = show ? hideText : showText;
+});
