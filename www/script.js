@@ -129,7 +129,7 @@ document.getElementById("toggleScoresButton").addEventListener("click", async fu
     const hideText = "Hide Scores";
 
     const tableBody = document.querySelector(".word-list tbody");
-    const columns = tableBody.getElementsByTagName("col");
+    const columns = [..tableBody.getElementsByTagName("col")];
 
     const show = button.innerText == showText;
 
