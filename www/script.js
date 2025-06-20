@@ -148,6 +148,10 @@ function createSlider(name, min, max) {
 createSlider("Commonness", 0, 5);
 createSlider("Offensiveness", 0, 5);
 createSlider("Sentiment", -5, 5);
+createSlider("Formality", 0, 5);
+createSlider("Figurativeness", 0, 5);
+createSlider("Complexity", 0, 5);
+createSlider("Political", 0, 5);
 
 document.getElementById("toggleScoresButton").addEventListener("click", async function (event) {
     event.preventDefault();
