@@ -35,6 +35,26 @@
             <input name="minSentiment" type="hidden" min="-5" max="5" value="-5">
             <input name="maxSentiment" type="hidden" min="-5" max="5" value="5">
 
+            <label>Formality</label>
+            <div class="slider"><div id="FormalitySlider"></div></div>
+            <input name="minFormality" type="hidden" min="0" max="5" value="0">
+            <input name="maxFormality" type="hidden" min="0" max="5" value="5">
+
+            <label>Figurativeness</label>
+            <div class="slider"><div id="FigurativenessSlider"></div></div>
+            <input name="minFigurativeness" type="hidden" min="0" max="5" value="0">
+            <input name="maxFigurativeness" type="hidden" min="0" max="5" value="5">
+
+            <label>Complexity</label>
+            <div class="slider"><div id="ComplexitySlider"></div></div>
+            <input name="minComplexity" type="hidden" min="0" max="5" value="0">
+            <input name="maxComplexity" type="hidden" min="0" max="5" value="5">
+
+            <label>Political</label>
+            <div class="slider"><div id="PoliticalSlider"></div></div>
+            <input name="minPolitical" type="hidden" min="0" max="5" value="0">
+            <input name="maxPolitical" type="hidden" min="0" max="5" value="5">
+
             <button style="grid-column: 1 / 4;" id="generateButton">Generate List</button>
             <button id="toggleScoresButton">Show Scores</button>
                         
@@ -57,6 +77,10 @@
                     <th class="score">Commonness</th>
                     <th class="score">Offensiveness</th>
                     <th class="score">Sentiment</th>
+                    <th class="score">Formality</th>
+                    <th class="score">Figurativeness</th>
+                    <th class="score">Complexity</th>
+                    <th class="score">Political</th>
                 </tr>
             </thead>
             <tbody>

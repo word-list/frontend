@@ -85,6 +85,10 @@ function rebuildTable() {
                 <td class="score">${word.commonness}</td>
                 <td class="score">${word.offensiveness}</td>
                 <td class="score">${word.sentiment}</td>
+                <td class="score">${word.formality}</td>
+                <td class="score">${word.figurativeness}</td>
+                <td class="score">${word.complexity}</td>
+                <td class="score">${word.political}</td>
             `;
             tbody.appendChild(row);
         });
