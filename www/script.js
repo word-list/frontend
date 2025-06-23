@@ -117,12 +117,12 @@ function rebuildTable() {
     else {
         thead.innerHTML = "";
         var columns = 4;
-        var wordsPerColumn = document.words.length / columns;
+        var wordsPerColumn = Math.ceil(document.words.length / columns);
         for (var rowIndex = 0; rowIndex < wordsPerColumn; rowIndex++) {
             const row = document.createElement("tr");
             let columnWords = ["", "", "", ""];
             for (var columnIndex = 0; columnIndex < columns; columnIndex++) {
-                const wordIndex = rowIndex * wordsPerColumn + columnIndex;
+                const wordIndex = rowIndex + columnIndex * wordsPerColumn;
                 if (wordIndex >= document.words.length) break;
                 columnWords[columnIndex] = document.words[wordIndex];
             }
