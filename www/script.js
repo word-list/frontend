@@ -123,7 +123,7 @@ function updateTable(words) {
 
 function createSlider(name, display, min, max) {
 
-    const parent = document.getElementById("attribute-container");
+    const placeholder = document.getElementById("attribute-container");
 
     const label = document.createElement("label");
     label.innerText = display;
@@ -149,10 +149,7 @@ function createSlider(name, display, min, max) {
     maxInput.max = max;
     maxInput.value = max;
 
-    parent.appendChild(label);
-    parent.appendChild(sliderContainer);
-    parent.appendChild(minInput);
-    parent.appendChild(maxInput);
+    placeholder.before(label, sliderContainer, minInput, maxInput);
 
     noUiSlider.create(slider, {
         pips: {
