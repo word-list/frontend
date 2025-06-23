@@ -73,6 +73,17 @@ document.getElementById("downloadTxtButton").addEventListener("click", async fun
 
 function rebuildTable() {
     const thead = document.querySelector(".word-list thead");
+
+    thead.innerHTML = "";
+    const headerRow = document.createElement("tr");
+    for (const attribute of document.attributes) {
+        const th = document.createElement("th");
+        th.className = "score";
+        th.innerText = attribute.Display;
+        headerRow.appendChild(th);
+    }
+    thead.appendChild(headerRow);
+
     const tbody = document.querySelector(".word-list tbody");
     tbody.innerHTML = "";
 
@@ -80,7 +91,6 @@ function rebuildTable() {
         thead.style.display = '';
         document.words.forEach(word => {
             const row = document.createElement("tr");
-
             const textTd = document.createElement("td");
             textTd.innerText = word.Text;
             row.appendChild(textTd);
@@ -95,7 +105,7 @@ function rebuildTable() {
         });
     }
     else {
-        thead.style.display = 'none';
+        thead.innerHTML = "";
         var columns = 4;
         var wordsPerColumn = document.words.length / columns;
         for (var rowIndex = 0; rowIndex < wordsPerColumn; rowIndex++) {
