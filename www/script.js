@@ -163,11 +163,11 @@ function createSlider(name, display, min, max) {
     placeholder.before(label, sliderContainer, minInput, maxInput);
 
     noUiSlider.create(slider, {
-        pips: {
-            mode: 'positions',
-            values: min < 0 ? [0, 50, 100] : [0, 100],
-            density: 100 / (max - min)
-        },
+        // pips: {
+        //     mode: 'positions',
+        //     values: min < 0 ? [0, 50, 100] : [0, 100],
+        //     density: 100 / (max - min)
+        // },
         start: [min < 0 ? 0 : min, max],
         connect: true,
         range: {
