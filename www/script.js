@@ -25,10 +25,10 @@ document.getElementById("generateButton").addEventListener("click", async functi
     }
 });
 
-function getTableContent(wordOnly) {    
+function getTableContent(wordOnly) {
     const words = document.words;
 
-    const output = wordOnly 
+    const output = wordOnly
         ? words.map(w => w.text).join("\n")
         : words.map(w => `${w.text},${w.commonness},${w.offensiveness},${w.sentiment}`).join("\n");
 
@@ -99,7 +99,7 @@ function rebuildTable() {
         var wordsPerColumn = document.words.length / columns;
         for (var rowIndex = 0; rowIndex < wordsPerColumn; rowIndex++) {
             const row = document.createElement("tr");
-            let columnWords = [ "", "", "", "" ];
+            let columnWords = ["", "", "", ""];
             for (var columnIndex = 0; columnIndex < columns; columnIndex++) {
                 const wordIndex = rowIndex + columnIndex * wordsPerColumn;
                 if (wordIndex >= document.words.length) break;
@@ -111,18 +111,48 @@ function rebuildTable() {
     }
 }
 
-function updateTable(words) {    
+function updateTable(words) {
     if (!words || words.length === 0) {
         return;
     }
 
     document.words = words;
 
-    rebuildTable();    
+    rebuildTable();
 }
 
-function createSlider(name, min, max) {
-    const slider = document.getElementById(name+"Slider");
+function createSlider(name, display, min, max, value) {
+
+    const parent = document.querySelector(".filter-section");
+
+    const label = document.createElement("label");
+    label.innerText = display;
+
+    const sliderContainer = document.createElement("div");
+    sliderContainer.className = "slider";
+
+    const slider = document.createElement("div");
+    slider.id = name + "Slider";
+    sliderContainer.appendChild(slider);
+
+    const minInput = document.createElement("input");
+    minInput.name = "min" + name;
+    minInput.type = "hidden";
+    minInput.min = min;
+    minInput.max = max;
+    minInput.value = value;
+
+    const maxInput = document.createElement("input");
+    maxInput.name = "max" + name;
+    maxInput.type = "hidden";
+    maxInput.min = min;
+    maxInput.max = max;
+    maxInput.value = max;
+
+    parent.appendChild(label);
+    parent.appendChild(sliderContainer);
+    parent.appendChild(minInput);
+    parent.appendChild(maxInput);
 
     noUiSlider.create(slider, {
         pips: {
@@ -139,19 +169,17 @@ function createSlider(name, min, max) {
         step: 1
     });
 
-    slider.noUiSlider.on("update", function(values) {
-        document.getElementsByName("min"+name)[0].value=Math.trunc(values[0]);
-        document.getElementsByName("max"+name)[0].value=Math.trunc(values[1]);
+    slider.noUiSlider.on("update", function (values) {
+        document.getElementsByName("min" + name)[0].value = Math.trunc(values[0]);
+        document.getElementsByName("max" + name)[0].value = Math.trunc(values[1]);
     })
 }
 
-createSlider("Commonness", 0, 5);
-createSlider("Offensiveness", 0, 5);
-createSlider("Sentiment", -5, 5);
-createSlider("Formality", 0, 5);
-createSlider("Figurativeness", 0, 5);
-createSlider("Complexity", 0, 5);
-createSlider("Political", 0, 5);
+const attributes = await fetch("/api/attributes").then(response => response.json());
+
+for (const attribute of attributes) {
+    createSlider(attribute.name, attribute.display, attribute.min, attribute.max);
+}
 
 document.getElementById("toggleScoresButton").addEventListener("click", async function (event) {
     event.preventDefault();
@@ -164,7 +192,7 @@ document.getElementById("toggleScoresButton").addEventListener("click", async fu
 
     button.innerText = document.showScores ? showWordsText : showScoresText;
 
-    rebuildTable();    
+    rebuildTable();
 });
 
 document.words = [
