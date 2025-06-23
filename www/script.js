@@ -99,10 +99,15 @@ function rebuildTable() {
             row.appendChild(textTd);
 
             document.attributes.forEach(attribute => {
-                const wordAttribute = word.Attributes[attribute.Name];
+                const wordAttribute = word.Attributes[attribute.Name] ?? 0;
                 const td = document.createElement("td");
-                td.innerText = wordAttribute === undefined ? "-" : wordAttribute.toString();
-                td.className = "score";
+                td.innerText = wordAttribute;
+                if (!wordAttribute) {
+                    td.className = "score zero";
+                }
+                else {
+                    td.className = "score";
+                }
                 row.appendChild(td);
             });
             tbody.appendChild(row);

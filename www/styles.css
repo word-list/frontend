@@ -33,7 +33,7 @@ body.dark-mode {
     align-items: start;
 }
 
-.filter-section { 
+.filter-section {
     position: sticky;
     top: 0;
     display: grid;
@@ -42,7 +42,7 @@ body.dark-mode {
     min-width: 25em;
     max-width: 25em;
     margin-left: auto;
-    margin-right: auto;    
+    margin-right: auto;
 }
 
 .filter-section button {
@@ -56,11 +56,12 @@ body.dark-mode {
 }
 
 .filter-section div.slider {
-    padding: 1.5em;    
+    padding: 1.5em;
     grid-column: 2 / 5;
 }
 
-input[type="number"], select {
+input[type="number"],
+select {
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -75,7 +76,7 @@ button {
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
-    transition: background 0.3s;    
+    transition: background 0.3s;
 }
 
 button:hover {
@@ -84,7 +85,7 @@ button:hover {
 
 button:disabled {
     pointer-events: none;
-    opacity: 0.5;    
+    opacity: 0.5;
 }
 
 .dark-mode-toggle {
@@ -104,23 +105,24 @@ button:disabled {
     border-radius: 5px;
 }
 
-.word-list th, .word-list td {
+.word-list th,
+.word-list td {
     padding: 0.2rem;
     border: 1px solid #ccc;
 }
 
-.word-list th {    
+.word-list th {
     font-weight: bold;
     color: var(--text-light);
 }
 
 .filter-section #sizeWarning {
-    grid-column: 1 / 4; 
-    margin-top: 0; 
+    grid-column: 1 / 4;
+    margin-top: 0;
     font-style: italic;
 }
 
-body.dark-mode .word-list th {    
+body.dark-mode .word-list th {
     color: var(--text-dark);
 }
 
@@ -149,4 +151,8 @@ span.icon {
 
 .word-list td.hidden {
     display: none;
+}
+
+td.zero {
+    color: #999;
 }
