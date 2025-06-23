@@ -161,6 +161,10 @@ tr.scores:hover {
     background-color: #f0f0f0;
 }
 
-.noUi-connect {
+.noUi-handle {
     background-color: var(--button-light) !important;
+}
+
+.noUi-connect {
+    background-color: var(--highlight-light) !important;
 }
