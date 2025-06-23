@@ -80,16 +80,17 @@ function rebuildTable() {
         thead.style.display = '';
         document.words.forEach(word => {
             const row = document.createElement("tr");
-            row.innerHTML = `
-                <td class="word">${word.text}</td>
-                <td class="score">${word.commonness}</td>
-                <td class="score">${word.offensiveness}</td>
-                <td class="score">${word.sentiment}</td>
-                <td class="score">${word.formality}</td>
-                <td class="score">${word.figurativeness}</td>
-                <td class="score">${word.complexity}</td>
-                <td class="score">${word.political}</td>
-            `;
+
+            const textTd = document.createElement("td");
+            textTd.innerText = word.Text;
+            row.appendChild(textTd);
+
+            for (const wordAttribute of word.Attributes) {
+                const td = document.createElement("td");
+                td.innerText = wordAttribute.Value;
+                row.appendChild(td);
+            }
+
             tbody.appendChild(row);
         });
     }
@@ -174,9 +175,15 @@ function createSlider(name, display, min, max) {
 
 async function loadAttributes() {
     const attributes = await fetch("/api/attributes").then(response => response.json());
+    const columnParent = document.getElementById("column-container");
     document.attributes = attributes;
     for (const attribute of attributes) {
         createSlider(attribute.Name, attribute.Display, attribute.Min, attribute.Max);
+
+        const th = document.createElement("th");
+        th.className = "score";
+        th.innerText = attribute.Display;
+        columnParent.appendChild(th);
     }
 }
 
