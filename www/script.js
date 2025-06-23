@@ -76,12 +76,15 @@ function rebuildTable() {
 
     thead.innerHTML = "";
     const headerRow = document.createElement("tr");
-    for (const attribute of document.attributes) {
+    const textTh = document.createElement("th");
+    textTh.innerText = "Word";
+    headerRow.appendChild(textTh);
+
+    document.attributes.forEach(attribute => {
         const th = document.createElement("th");
-        th.className = "score";
         th.innerText = attribute.Display;
         headerRow.appendChild(th);
-    }
+    });
     thead.appendChild(headerRow);
 
     const tbody = document.querySelector(".word-list tbody");
@@ -95,12 +98,12 @@ function rebuildTable() {
             textTd.innerText = word.Text;
             row.appendChild(textTd);
 
-            for (const wordAttribute of word.Attributes) {
+            document.attributes.forEach(attribute => {
+                const wordAttribute = word.Attributes[attribute.Name];
                 const td = document.createElement("td");
-                td.innerText = wordAttribute.Value;
+                td.innerText = wordAttribute ? wordAttribute.Value : "N/A";
                 row.appendChild(td);
-            }
-
+            });
             tbody.appendChild(row);
         });
     }
