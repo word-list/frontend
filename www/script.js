@@ -122,7 +122,7 @@ function rebuildTable() {
             const row = document.createElement("tr");
             let columnWords = ["", "", "", ""];
             for (var columnIndex = 0; columnIndex < columns; columnIndex++) {
-                const wordIndex = rowIndex + columnIndex * wordsPerColumn;
+                const wordIndex = rowIndex * wordsPerColumn + columnIndex;
                 if (wordIndex >= document.words.length) break;
                 columnWords[columnIndex] = document.words[wordIndex];
             }
