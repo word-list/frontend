@@ -165,15 +165,22 @@ tr.scores:hover {
     background-color: var(--button-light) !important;
 }
 
-.noUi-handle-upper {
+.noUi-handle-upper,
+.noUi-handle-lower {
     border: none !important;
     box-shadow: none !important;
 }
 
-.noUi-handle-upper:hover {
+.noUi-handle-upper:hover,
+{
+.noUi-handle-lower:hover {
     background-color: var(--highlight-light) !important;
 }
 
+.noUi-base {
+    background-color: #d0d0d0 !important;
+}
+
 .noUi-connect {
-    background-color: #d9d9d9 !important;
+    background-color: #ffffff !important;
 }
