@@ -163,6 +163,7 @@ tr.scores:hover {
 
 .noUi-handle {
     background-color: var(--button-light) !important;
+    cursor: pointer;
 }
 
 .noUi-handle-upper,
