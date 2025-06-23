@@ -94,6 +94,7 @@ function rebuildTable() {
         thead.style.display = '';
         document.words.forEach(word => {
             const row = document.createElement("tr");
+            row.className = "scores";
             const textTd = document.createElement("td");
             textTd.innerText = word.Text;
             row.appendChild(textTd);
