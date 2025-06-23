@@ -28,11 +28,18 @@ document.getElementById("generateButton").addEventListener("click", async functi
 function getTableContent(wordOnly) {
     const words = document.words;
 
-    const output = wordOnly
-        ? words.map(w => w.text).join("\n")
-        : words.map(w => `${w.text},${w.commonness},${w.offensiveness},${w.sentiment}`).join("\n");
+    if (wordOnly) {
+        return words.map(w => w.Text).join("\n");
+    }
 
-    return output;
+    return words.map(w => {
+        items = [w.Text];
+        document.attributes.forEach(attribute => {
+            const wordAttribute = w.Attributes[attribute.Name] ?? 0;
+            items.push(wordAttribute);
+        });
+        return items.join(",");
+    }).join("\n");
 }
 
 function copyTableData(wordOnly) {
