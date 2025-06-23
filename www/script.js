@@ -121,7 +121,7 @@ function updateTable(words) {
     rebuildTable();
 }
 
-function createSlider(name, display, min, max, value) {
+function createSlider(name, display, min, max) {
 
     const parent = document.getElementById("attribute-container");
 
@@ -140,7 +140,7 @@ function createSlider(name, display, min, max, value) {
     minInput.type = "hidden";
     minInput.min = min;
     minInput.max = max;
-    minInput.value = value;
+    minInput.value = min;
 
     const maxInput = document.createElement("input");
     maxInput.name = "max" + name;
@@ -179,7 +179,7 @@ async function loadAttributes() {
     const attributes = await fetch("/api/attributes").then(response => response.json());
     document.attributes = attributes;
     for (const attribute of attributes) {
-        createSlider(attribute.name, attribute.display, attribute.min, attribute.max);
+        createSlider(attribute.Name, attribute.Display, attribute.Min, attribute.Max);
     }
 }
 
