@@ -157,14 +157,14 @@ function createSlider(name, display, min, max) {
     sliderContainer.appendChild(slider);
 
     const minInput = document.createElement("input");
-    minInput.name = "min" + name;
+    minInput.name = name + "Min";
     minInput.type = "hidden";
     minInput.min = min;
     minInput.max = max;
     minInput.value = min;
 
     const maxInput = document.createElement("input");
-    maxInput.name = "max" + name;
+    maxInput.name = name + "Max";
     maxInput.type = "hidden";
     maxInput.min = min;
     maxInput.max = max;
