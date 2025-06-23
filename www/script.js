@@ -14,7 +14,7 @@ document.getElementById("generateButton").addEventListener("click", async functi
         const response = await fetch(`/api/words?${params}`);
         const data = await response.json();
 
-        updateTable(data.words);
+        updateTable(data);
     }
     catch (error) {
         console.error("Error fetching word list:", error);
@@ -106,7 +106,7 @@ function rebuildTable() {
                 if (wordIndex >= document.words.length) break;
                 columnWords[columnIndex] = document.words[wordIndex];
             }
-            row.innerHTML = columnWords.map(w => w ? `<td class="word">${w.text}</td>` : "").join("");
+            row.innerHTML = columnWords.map(w => w ? `<td class="word">${w.Text}</td>` : "").join("");
             tbody.appendChild(row);
         }
     }
