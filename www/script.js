@@ -188,8 +188,8 @@ function createSlider(name, display, min, max) {
     });
 
     slider.noUiSlider.on("update", function (values) {
-        document.getElementsByName("min" + name)[0].value = Math.trunc(values[0]);
-        document.getElementsByName("max" + name)[0].value = Math.trunc(values[1]);
+        document.getElementsByName(name + "Min")[0].value = Math.trunc(values[0]);
+        document.getElementsByName(name + "Max")[0].value = Math.trunc(values[1]);
     })
 }
 
