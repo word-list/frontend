@@ -101,7 +101,8 @@ function rebuildTable() {
             document.attributes.forEach(attribute => {
                 const wordAttribute = word.Attributes[attribute.Name];
                 const td = document.createElement("td");
-                td.innerText = wordAttribute ? wordAttribute.Value : "N/A";
+                td.innerText = wordAttribute ? wordAttribute : "";
+                td.className = "score";
                 row.appendChild(td);
             });
             tbody.appendChild(row);
