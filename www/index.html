@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Word List Generator</title>    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.6.0/nouislider.min.css">    
+    <title>Word List Generator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.6.0/nouislider.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
     <h1>📌 Word List Generator</h1>
@@ -18,51 +20,19 @@
             <input name="randomCount" type="number" min="0" max="10000" value="100" />
             <input name="limit" type="hidden" value="100" />
 
-            <p id="sizeWarning" style="display: none;"><span class="icon">⚠️</span> Requesting a list of over 1000 words will result in a download link rather than a live list.</p>
+            <p id="sizeWarning" style="display: none;"><span class="icon">⚠️</span> Requesting a list of over 1000 words
+                will result in a download link rather than a live list.</p>
 
-            <label>Commonness</label>
-            <div class="slider"><div id="CommonnessSlider"></div></div>
-            <input name="minCommonness" type="hidden" min="0" max="5" value="0">
-            <input name="maxCommonness" type="hidden" min="0" max="5" value="5">
-
-            <label>Offensiveness</label>
-            <div class="slider"><div id="OffensivenessSlider"></div></div>
-            <input name="minOffensiveness" type="hidden" min="0" max="5" value="0">
-            <input name="maxOffensiveness" type="hidden" min="0" max="5" value="5">
-
-            <label>Sentiment</label>
-            <div class="slider"><div id="SentimentSlider"></div></div>
-            <input name="minSentiment" type="hidden" min="-5" max="5" value="-5">
-            <input name="maxSentiment" type="hidden" min="-5" max="5" value="5">
-
-            <label>Formality</label>
-            <div class="slider"><div id="FormalitySlider"></div></div>
-            <input name="minFormality" type="hidden" min="0" max="5" value="0">
-            <input name="maxFormality" type="hidden" min="0" max="5" value="5">
-
-            <label>Figurativeness</label>
-            <div class="slider"><div id="FigurativenessSlider"></div></div>
-            <input name="minFigurativeness" type="hidden" min="0" max="5" value="0">
-            <input name="maxFigurativeness" type="hidden" min="0" max="5" value="5">
-
-            <label>Complexity</label>
-            <div class="slider"><div id="ComplexitySlider"></div></div>
-            <input name="minComplexity" type="hidden" min="0" max="5" value="0">
-            <input name="maxComplexity" type="hidden" min="0" max="5" value="5">
-
-            <label>Political</label>
-            <div class="slider"><div id="PoliticalSlider"></div></div>
-            <input name="minPolitical" type="hidden" min="0" max="5" value="0">
-            <input name="maxPolitical" type="hidden" min="0" max="5" value="5">
+            <div id="attribute-container"></div>
 
             <button style="grid-column: 1 / 4;" id="generateButton">Generate List</button>
             <button id="toggleScoresButton">Show Scores</button>
-                        
+
             <button id="copyCsvButton">📋 CSV</button>
             <button id="copyTxtButton">📋 TXT</button>
             <button id="downloadCsvButton">📥 CSV</button>
-            <button id="downloadTxtButton">📥 TXT</button>            
-            
+            <button id="downloadTxtButton">📥 TXT</button>
+
             <div style="grid-column: 1 / 5;">
                 See how this all works on <a href="https://github.com/word-list">GitHub</a>!
             </div>
@@ -84,12 +54,13 @@
                 </tr>
             </thead>
             <tbody>
-                
+
             </tbody>
         </table>
-    </div>
+        </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.6.0/nouislider.min.js"></script>
-    <script src="script.js"></script>    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.6.0/nouislider.min.js"></script>
+        <script src="script.js"></script>
 </body>
+
 </html>

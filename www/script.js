@@ -123,7 +123,7 @@ function updateTable(words) {
 
 function createSlider(name, display, min, max, value) {
 
-    const parent = document.querySelector(".filter-section");
+    const parent = document.getElementById("attribute-container");
 
     const label = document.createElement("label");
     label.innerText = display;
@@ -175,10 +175,12 @@ function createSlider(name, display, min, max, value) {
     })
 }
 
-const attributes = await fetch("/api/attributes").then(response => response.json());
-
-for (const attribute of attributes) {
-    createSlider(attribute.name, attribute.display, attribute.min, attribute.max);
+async function loadAttributes() {
+    const attributes = await fetch("/api/attributes").then(response => response.json());
+    document.attributes = attributes;
+    for (const attribute of attributes) {
+        createSlider(attribute.name, attribute.display, attribute.min, attribute.max);
+    }
 }
 
 document.getElementById("toggleScoresButton").addEventListener("click", async function (event) {
@@ -195,6 +197,4 @@ document.getElementById("toggleScoresButton").addEventListener("click", async fu
     rebuildTable();
 });
 
-document.words = [
-    { text: "apple", offensiveness: 2, commonness: 5, sentiment: 0 }
-];
+loadAttributes();
